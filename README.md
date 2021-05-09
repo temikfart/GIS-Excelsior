@@ -1,4 +1,3 @@
 # GIS Excelsior
 ----------------------
-Hi wrld!
-sup HELLO
+>Это проект на конкурс Braim: Проект Марс.
