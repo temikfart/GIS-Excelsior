@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excelsior</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton&effect=neon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../Mars/lib/leaflet.css"> <!-- css билблиотеки //заменить путь на свой  -->
+</head>
+<body>
+        <!-- Главный контейнер, в него будет обернуто все приложение  -->
+        <div class="main_container">
+             <!-- Контейнер управляющего блока -->
+            <div class="control_panel_block">
+                <div class="main_control_block">
+                    <p class = 'title_block'>Модули</p>
+                    <div class="modules">
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_module' src="img/модули/1.png">
+                                <p class = 'name_module'>Жилой модуль</p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_module' src="img/модули/2.png">
+                                <p class = 'name_module'>
+                                    Космодром
+                                </p>
+                        </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/3.png">
+                                <p class = 'name_module'>
+                                    Центр связи
+                                </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/4.png">
+                                <p class = 'name_module'>
+                                    Растительный модуль
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/5.png">
+                                <p class = 'name_module'>
+                                    Мусорный полигон
+                                </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/6.png">
+                                <p class = 'name_module'>
+                                    Дорога                            </p>
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/7.png">
+                                <p class = 'name_module'>
+                                    Производственное предприятие                            </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/8.png">
+                                <p class = 'name_module'>
+                                    Военная база                            </p>
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/9.png">
+                                <p class = 'name_module'>
+                                    Спортивный модуль                            </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/10.png">
+                                <p class = 'name_module'>
+                                    Административный  модуль                        
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/11.png">
+                                <p class = 'name_module'>
+                                    Ремонтная мастерская                            </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/12.png">
+                                <p class = 'name_module'>
+                                    Досуговое учреждение
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/13.png">
+                                <p class = 'name_module'>
+                                    Карьер
+                                </p>
+                            </div>
+                            <div class="block_module">
+                                <img class = 'img_modul' src="img/модули/14.png">
+                                <p class = 'name_module'>
+                                    Медицинский модуль
+                                </p>
+                            </div>
+                        </div>
+                        <div class="blocks_item">
+                            <div class="block_module">
+                            <img class = 'img_modul' src="img/модули/15.png">
+                            <p class = 'name_module'>
+                                Образовательный модуль
+                            </p>
+                        </div>
+                        <div class="block_module">
+                            <img class = 'img_modul' src="img/модули/16.png">
+                            <p class = 'name_module'>
+                                Мусорный полигон
+                            </p>
+                        </div></div>
+                        
+                      
+                      
+                      
+                      
+                        
+                    </div>
+                </div>
+                <div class="sub_control_block">
+                    <p class = 'title_block'>Функции редактирования</p>
+                </div>
+            </div>
+            <!-- Контейнер карты -->
+            <div id="map" ></div>
+                <!-- Подключение скриптов библиотеки (путь скриптов заменить на свой)  -->
+                <script language="JavaScript" src="../Mars/lib/leaflet.js"></script>
+                <script language="JavaScript" src="../Mars/lib/fg.js"></script>
+
+                <!-- Подключение карты  -->
+                <script language="JavaScript" src = "../Mars/include_map.js"></script>
+
+             <!-- Контейнер информационного блока -->
+            <div class="info_panel_block">
+                <div class="main_info_block">
+                    <p class = 'title_block'>Описание модуля</p>
+                    <!-- Вкладки -->
+                    <div class="tab">
+                        <button id="tablinks1" onclick="tab('one')">Описание</button>
+                        <button id="tablinks2" onclick="tab('two')">Критерии</button>
+                    </div>
+
+                    <!-- Контейнеры вкладок -->  
+                    <div id="one" class="tabcontent">
+                        <p id = 'description'>Жилой модуль</p>
+                        <img src="img/zh1.jpg" alt="" class="tab_image">
+                        <p class="tab_text">
+                            Небольшой модуль, может полноценно обеспечивать жилье для 6-10 колонистов, включает в себя кровати, ящики для хранения вещей, комнату для поддержания гигиены и т.д.
+                        </p>
+                    </div>
+                      
+                    <div id="two" class="tabcontent">
+                        <p id = 'criteria'></p>
+                        Приоритет: 1 <br>
+                        Значимость: 3 <br>
+                        Рельеф местности: I-III <br>
+                        Опасность: 3 <br>
+                        Место затратность: 3-4 <br>
+                        Энергопотребление: 3-4 <br>
+                        Снабжение: - <br>
+                        Спецперсонал: - <br>
+                    </div>
+                   
+                    
+                    <!-- Подключение скрипта кнопок модулей  -->
+                    <script language="JavaScript" src ="button_modules.js"></script>
+                </div>
+                <div class="sub_info_block">
+                    <p class = 'title_block'>Техническое описание</p>
+                    <p id ='text_content_teh_description' style="color:#fff"></p>
+                </div>
+            </div>
+    <!--Координаты  -->
+    <!-- <div class="coords_container" onmousemove="getPosition()">
+        <div class="coords_block">
+            <p class="coords_item" id="coords_item">
+                coords: 
+            </p>
+        </div>
+    </div> -->
+        </div>  
+      
+    <script src="main.js"></script>
+</body>
+</html>
