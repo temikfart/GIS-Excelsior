@@ -1,0 +1,6 @@
+
+documentation/main.pdf
+*.aux
+*.log
+*.out
+*.gz
