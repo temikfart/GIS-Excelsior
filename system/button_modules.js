@@ -32,7 +32,7 @@ function modul_click(item,img)
         var markerOptions = {
         title: mass_name_modules[item],
         clickable: true,
-        draggable: true, //перемещение
+        //draggable: true, //перемещение
         icon: customIcon
         }
   
@@ -50,25 +50,22 @@ function modul_click(item,img)
 //механика кнопок вкладок
 function tab(numb) 
 {
-    if(click == true)
-    {
         if(numb == 'one')
         {
             document.getElementById('one').style.display = "block";
-            document.getElementById('tablinks1').style.background ='white';
+            document.getElementById('tablinks1').style.background ='#F3AC04';
             document.getElementById('tablinks1').style.color = 'black';
             document.getElementById('two').style.display = "none";
-            document.getElementById('tablinks2').style.background ='#283593';
+            document.getElementById('tablinks2').style.background ='#770018';
             document.getElementById('tablinks2').style.color = 'white';
         }
         else
         {
             document.getElementById('one').style.display = "none";
-            document.getElementById('tablinks1').style.background ='#283593';
+            document.getElementById('tablinks1').style.background ='#770018';
             document.getElementById('tablinks1').style.color = 'white';
             document.getElementById('two').style.display = "block";
-            document.getElementById('tablinks2').style.background ='white';
+            document.getElementById('tablinks2').style.background ='#F3AC04';
             document.getElementById('tablinks2').style.color = 'black';
         }
-    }
 }
