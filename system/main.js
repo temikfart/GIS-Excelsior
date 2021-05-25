@@ -24,8 +24,10 @@ function getHelp(){
 	var x = y = 0;
 	if(e.pageX > 180 && e.pageY < 120){
 		elem.innerHTML = "Здесь нельзя расположить модуль";
+		document.getElementById("map").style.backgroundColor = "#DD5145";
 	}else{
 		elem.innerHTML = "Подсказки";
+		document.getElementById("map").style.backgroundColor = "#fff";
 	}
 
 	if((e.pageX > 700 && e.pageX < 800) && (e.pageY < 200 && e.pageX > 300)){
@@ -34,6 +36,5 @@ function getHelp(){
 }
 
 function getColor(){
-	var main_container = document.getAnimations("main_container");
-	main_container.style.color = "red";
+	
 }

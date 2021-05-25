@@ -3,7 +3,7 @@ let mass_module_description = ['Описание жилого модуля','О�
 let mass_module_criteria = ['Критерии жилого модуля','Критерии космодрома'];
 let mass_teh_description = ['Техническое описание жилого модуля','Техническое описание космодрома'];
 //для проверки есть уже иконка или нет
-let proverka_model = [false,false];
+let proverka_model = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
 
 let click = false;
 let count = 0;
