@@ -83,12 +83,13 @@
                             <div class="block_module" onclick="modul_click(10,'img/модули/11.png')">
                                 <img class = 'img_modul' src="img/модули/11.png">
                                 <p class = 'name_module'>
-                                    Ремонтная мастерская                            </p>
+                                    Солнечные электростанции                           
+                                </p>
                             </div>
                             <div class="block_module" onclick="modul_click(11,'img/модули/12.png')" >
                                 <img class = 'img_modul' src="img/модули/12.png">
                                 <p class = 'name_module'>
-                                    Досуговое учреждение
+                                    Ремонтная мастерская
                                 </p>
                             </div>
                         </div>
@@ -96,13 +97,13 @@
                             <div class="block_module" onclick="modul_click(12,'img/модули/13.png')">
                                 <img class = 'img_modul' src="img/модули/13.png">
                                 <p class = 'name_module'>
-                                    Карьер
+                                    Досуговое учреждение
                                 </p>
                             </div>
                             <div class="block_module" onclick="modul_click(13,'img/модули/14.png')">
                                 <img class = 'img_modul' src="img/модули/14.png">
                                 <p class = 'name_module'>
-                                    Медицинский модуль
+                                    Карьер
                                 </p>
                             </div>
                         </div>
@@ -110,13 +111,13 @@
                             <div class="block_module" onclick="modul_click(14,'img/модули/15.png')">
                             <img class = 'img_modul' src="img/модули/15.png">
                             <p class = 'name_module'>
-                                Образовательный модуль
+                                Медицинский модуль
                             </p>
                         </div>
                         <div class="block_module" onclick="modul_click(15,'img/модули/16.png')">
                             <img class = 'img_modul' src="img/модули/16.png">
                             <p class = 'name_module'>
-                                Мусорный полигон
+                                Образовательный модуль
                             </p>
                         </div></div>
                         
@@ -149,31 +150,14 @@
                     <p class = 'title_block'>Описание модуля</p>
                     <!-- Вкладки -->
                     <div class="tab">
-                        <button id="tablinks1" onclick="tab('one')">Описание</button>
-                        <button id="tablinks2" onclick="tab('two')">Критерии</button>
+                        <button id="tablinks1" onclick="tab('one_tab')">Описание</button>
+                        <button id="tablinks2" onclick="tab('two_tab')">Критерии</button>
                     </div>
 
                     <!-- Контейнеры вкладок -->  
-                    <div id="one" class="tabcontent">
-                        <p id = 'description'>Жилой модуль</p>
-                        <img src="img/zh1.jpg" alt="" class="tab_image">
-                        <p class="tab_text">
-                            Небольшой модуль, может полноценно обеспечивать жилье для 6-10 колонистов, включает в себя кровати, ящики для хранения вещей, комнату для поддержания гигиены и т.д.
-                        </p>
-                    </div>
+                    <div id="one_tab" class="tabcontent"></div>
                       
-                    <div id="two" class="tabcontent">
-                        <p id = 'criteria'></p>
-                        Приоритет: 1 <br>
-                        Значимость: 3 <br>
-                        Рельеф местности: I-III <br>
-                        Опасность: 3 <br>
-                        Место затратность: 3-4 <br>
-                        Энергопотребление: 3-4 <br>
-                        Снабжение: - <br>
-                        Спецперсонал: - <br>
-                    </div>
-                   
+                    <div id="two_tab" class="tabcontent"></div>
                     
                     <!-- Подключение скрипта кнопок модулей  -->
                     <script language="JavaScript" src ="button_modules.js"></script>
