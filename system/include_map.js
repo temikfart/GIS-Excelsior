@@ -9,10 +9,6 @@ var image = L.imageOverlay('map_mars.jpg', bounds).addTo(map);
 
 map.fitBounds(bounds);
 
-L.CRS.Wall = L.extend({}, L.CRS.Simple, {
-  transformation: new L.Transformation(0.4920000014213405, 5.758860016636791, -0.4920000014213405, 968.389580797584),
-});
-
 
 
 
