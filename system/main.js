@@ -1,22 +1,22 @@
+//вывод координат
+map.on('mousemove', function (e) 
+{
+  var coords = document.getElementById('coords_item');
+  if((e.latlng.lat > 3320)||( e.latlng.lng > 1442)||(e.latlng.lat < 0)||( e.latlng.lng < 0)) //поставить ограничения карты (когда станут известны координаты)
+  {
+	coords.innerHTML = 'вы вышли из карты';
+  }
+  else
+  {
+	coords.innerHTML = "x:" + e.latlng.lat + ' ' + "y: " + e.latlng.lng;
+  }
+});
 
-function getPosition(e){
-	var x = y = 0;
-    var coords = document.getElementById('coords_item');
-	if (!e) {
-		var e = window.event;
-	}
- 
-	if (e.pageX || e.pageY){
-		x = e.pageX;
-		y = e.pageY;
-	} else if (e.clientX || e.clientY){
-		x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft;
-		y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop;
-	}
- 
-	coords.innerHTML = "x:" + x + ' ' + "y: " + y;
-}
-function getHelp(){
+
+
+
+function getHelp()
+{
 	var elem = document.getElementById('notices');
 	if (!e) {
 		var e = window.event;
@@ -35,6 +35,3 @@ function getHelp(){
 	}
 }
 
-function getColor(){
-	
-}

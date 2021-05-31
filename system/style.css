@@ -213,8 +213,10 @@ body{
 }
 .coords_item{
     padding-top: 10px;
+    padding-left: 20px;
     height: 30px;
-    width: 100px;
+    width: 400px;
+    text-align: left;
     color:#Fff;
 }
 .notices{

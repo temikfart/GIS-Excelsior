@@ -91,7 +91,7 @@ function modul_click(item,img)
         //иконка
         var iconOptions = {
         iconUrl: img,
-        iconSize: [200, 100]
+        iconSize: [200, 200],
         }
         var customIcon = L.icon(iconOptions);
         var markerOptions = {
