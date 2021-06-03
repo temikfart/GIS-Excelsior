@@ -68,8 +68,11 @@ let mass_teh_description = ['Техническое описание жилог�
                             'Техническое описание образовательных модулей'];
 
 //для проверки есть уже иконка или нет
-let proverka_model = [false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false];
-
+let modules = [];
+let proverka_model = [];
+for (let i = 0; i < 100; i++){
+    proverka_model[i] = 0;
+}
 let click = false;
 let count = 0;
 
@@ -83,11 +86,11 @@ function modul_click(item,img)
     document.getElementById('two_tab').innerHTML = "<p>Приоритет: "+mass_module_criteria[item][0]+" <br>Значимость: "+mass_module_criteria[item][1]+" <br>Рельеф местности: "+mass_module_criteria[item][2]+" <br>Опасность: "+mass_module_criteria[item][3]+" <br>Место затратность: "+mass_module_criteria[item][4]+" <br>Энергопотребление: "+mass_module_criteria[item][5]+"</p>";
     document.getElementById('text_content_teh_description').textContent = mass_teh_description[item];
     tab('one_tab');
-
+    
     //ДОБАВЛЕНИЕ ИКОНОК НА КАРТУ
-    if(proverka_model[item] == false)
+    if(proverka_model[item] < 100)
     {
-        proverka_model[item] = true;
+        proverka_model[item]++;
         //иконка
         var iconOptions = {
         iconUrl: img,
@@ -104,7 +107,16 @@ function modul_click(item,img)
         // Значение координат для иконки
         var marker = L.marker([1660, 721], markerOptions);
         count += 100;
-  
+    let module_obj = new Object();
+    module_obj.img = mass_images_moduls[item]; // Картинка модуля в описании
+    module_obj.criteria = mass_module_criteria[item][0] // Приоритет
+    module_obj.description = mass_teh_description[item]; // Описание
+    module_obj.lat = marker._latlng.lat;
+    module_obj.lng = marker._latlng.lng;
+
+    modules.push(module_obj);
+    console.log(modules);
+    
         // Надпись на иконку
         marker.bindPopup(mass_name_modules[item]).openPopup();
   
