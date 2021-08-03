@@ -1,4 +1,23 @@
-let mass_name_modules = ['Жилые модули','Космодром','Вышки связи','Плантации','Мусорные полигоны','Дороги для марсоходов','Производственные предприятия','Военные базы','Спортивные модули','Административные модули','Солнечные электростанции','Ремонтные мастерские','Досуговые учреждения','Горнодобывающие шахты','Медицинские модули','Образовательные модули'];
+// Название модулей
+
+let mass_name_modules = ['Жилые модули',
+                        'Космодром',
+                        'Вышки связи',
+                        'Плантации',
+                        'Мусорные полигоны',
+                        'Дороги для марсоходов',
+                        'Производственные предприятия',
+                        'Военные базы','Спортивные модули',
+                        'Административные модули',
+                        'Солнечные электростанции',
+                        'Ремонтные мастерские',
+                        'Досуговые учреждения',
+                        'Горнодобывающие шахты',
+                        'Медицинские модули',
+                        'Образовательные модули'];
+
+// Фотографии модулей
+
 let mass_images_moduls = [  'https://infuture.ru/filemanager/mars-one-colony-astronauts-2%20(1).jpg',
                             'https://thespaceway.info/wp-content/uploads/2020/09/rngp3g5i4ngcljczrdjz7mbmya-1024x576.jpg',
                             'https://saintbasil.ru/img.php?ipt=https://images11.popmeh.ru/upload/img_cache/e5f/e5f1e20ebc39c2d7ef27bd3c483a1497_ce_1400x746x0x21.jpg',
@@ -12,9 +31,29 @@ let mass_images_moduls = [  'https://infuture.ru/filemanager/mars-one-colony-ast
                             'https://habrastorage.org/getpro/habr/post_images/e1e/17a/453/e1e17a453964557e4405af4063463d32.jpg',
                             'https://avatars.mds.yandex.net/get-zen_doc/2814495/pub_5f9c7a55b09e797ceb27735e_5f9c8e8649505f6811208901/scale_1200',
                             'https://www.vladtime.ru/uploads/posts/2018-11/thumbs/1543324659_6693534-6433213-image-a-4_1543314581522.jpg',
-                            'https://lh3.googleusercontent.com/proxy/krpGdPE8qKHpyxZ4W74K-MdVU5kIojfdev7Qta4rA_JnyhzUbunt4hVF4i6YJTYGtT_7dcbQLEceG16KrVDthsBAzYlWY-Evhlx07WuCuxQ',
+                            'https://ic.pics.livejournal.com/zelenyikot/65139567/243088/243088_900.jpg',
                             'https://www.vladtime.ru/uploads/posts/2018-11/thumbs/1543324596_6693532-6433213-image-a-2_1543314571838.jpg',
                             'https://www.vesvks.ru/public/article/images/ed23743e5d00f002b116008b6d28cba7a1c7d836.jpg'];
+
+// Маркеры модулей
+
+let mass_imges_markers = ['img/модули/маркеры/1.png',
+                        'img/модули/маркеры/2.png',
+                        'img/модули/маркеры/3.png',
+                        'img/модули/маркеры/4.png',
+                        'img/модули/маркеры/5.png',
+                        'img/модули/маркеры/6.png',
+                        'img/модули/маркеры/7.png',
+                        'img/модули/маркеры/8.png',
+                        'img/модули/маркеры/9.png',
+                        'img/модули/маркеры/10.png',
+                        'img/модули/маркеры/11.png',
+                        'img/модули/маркеры/12.png',
+                        'img/модули/маркеры/13.png',
+                        'img/модули/маркеры/14.png',
+                        'img/модули/маркеры/15.png'];
+
+// Описание модулей
 
 let mass_module_description = [ '<b>Жилой модуль.</b> Небольшой модуль, может полноценно обеспечивать жилье для 6-10 колонистов, включает в себя кровати, ящики для хранения вещей, комнату для поддержания гигиены и т.д.',
                                 '<b>Космодром.</b> Достаточно обширная территория, где расположен ЦУП, взлетно-посадочные площадки, здания для обслуживания космодрома и проживания персонала, хранилища и центр сборки и ремонта ракет.',
@@ -33,6 +72,8 @@ let mass_module_description = [ '<b>Жилой модуль.</b> Небольш�
                                 '<b>Медицинский модуль.</b> Большой модуль, где можно провести любые анализы или операцию. В модуле также принимаются роды. Имеется крематорий.',
                                 '<b>Образовательный модуль.</b> Модуль, где помещается несколько классов. Имеются комнаты для занятий группами в любых сферах: от математики до астрономии.'];
 
+// Критерии модулей
+
 let mass_module_criteria = [[1, 3, 'I-III', 3, '3-4', '3-4'],
                             [1, 2, 'II-III', 1, 1, 2],
                             [2, 2, 'I-II', 3, 3, 3],
@@ -50,6 +91,8 @@ let mass_module_criteria = [[1, 3, 'I-III', 3, '3-4', '3-4'],
                             [2, 2, 'II-III', 3, 3, 3],
                             [3, 1, 'II-III', 3, 3, 4]];
 
+// Техническое описание модулей
+
 let mass_teh_description = ['Техническое описание жилого модуля',
                             'Техническое описание космодрома',
                             'Техническое описание вышки связи',
@@ -66,86 +109,3 @@ let mass_teh_description = ['Техническое описание жилог�
                             'Техническое описание горнодобывающих шахт',
                             'Техническое описание медицинских модулей',
                             'Техническое описание образовательных модулей'];
-
-//для проверки есть уже иконка или нет
-let modules = [];
-let proverka_model = [];
-for (let i = 0; i < 100; i++){
-    proverka_model[i] = 0;
-}
-let click = false;
-let count = 0;
-
-//кнопки модулей
-function modul_click(item,img)
-{
-    //ОТКРЫТИЕ ПЕРВОЙ ВКЛАДКИ
-    click = true;
-
-    document.getElementById('one_tab').innerHTML = "<img src='"+mass_images_moduls[item]+"' class='tab_image'></img><p class='tab_text'>"+mass_module_description[item]+"</p>";
-    document.getElementById('two_tab').innerHTML = "<p>Приоритет: "+mass_module_criteria[item][0]+" <br>Значимость: "+mass_module_criteria[item][1]+" <br>Рельеф местности: "+mass_module_criteria[item][2]+" <br>Опасность: "+mass_module_criteria[item][3]+" <br>Место затратность: "+mass_module_criteria[item][4]+" <br>Энергопотребление: "+mass_module_criteria[item][5]+"</p>";
-    document.getElementById('text_content_teh_description').textContent = mass_teh_description[item];
-    tab('one_tab');
-    
-    //ДОБАВЛЕНИЕ ИКОНОК НА КАРТУ
-    if(proverka_model[item] < 100)
-    {
-        proverka_model[item]++;
-        //иконка
-        var iconOptions = {
-        iconUrl: img,
-        iconSize: [200, 200],
-        }
-        var customIcon = L.icon(iconOptions);
-        var markerOptions = {
-        title: mass_name_modules[item],
-        clickable: true,
-        draggable: true, //перемещение
-        icon: customIcon
-        }
-  
-        // Значение координат для иконки
-        var marker = L.marker([1660, 721], markerOptions);
-        count += 100;
-    let module_obj = new Object();
-    module_obj.img = mass_images_moduls[item]; // Картинка модуля в описании
-    module_obj.criteria = mass_module_criteria[item][0] // Приоритет
-    module_obj.description = mass_teh_description[item]; // Описание
-    module_obj.lat = marker._latlng.lat;
-    module_obj.lng = marker._latlng.lng;
-
-    modules.push(module_obj);
-    console.log(modules);
-    
-        // Надпись на иконку
-        marker.bindPopup(mass_name_modules[item]).openPopup();
-  
-        marker.addTo(map);
-    }
-}
-
-//механика кнопок вкладок
-function tab(numb) 
-{
-    if(click == true)
-    {
-        if(numb == 'one_tab')
-        {
-            document.getElementById('one_tab').style.display = "block";
-            document.getElementById('tablinks1').style.background ='#F3AC04';
-            document.getElementById('tablinks1').style.color = 'black';
-            document.getElementById('two_tab').style.display = "none";
-            document.getElementById('tablinks2').style.background ='#770018';
-            document.getElementById('tablinks2').style.color = 'white';
-        }
-        else
-        {
-            document.getElementById('one_tab').style.display = "none";
-            document.getElementById('tablinks1').style.background ='#770018';
-            document.getElementById('tablinks1').style.color = 'white';
-            document.getElementById('two_tab').style.display = "block";
-            document.getElementById('tablinks2').style.background ='#F3AC04';
-            document.getElementById('tablinks2').style.color = 'black';
-        }
-    }
-}
