@@ -1,10 +1,7 @@
-var items = [];
-var markers = [];
-
 // проверяет наличие модулей на карте
 function check_moduls(numb)
 {
-    if(markers.length == 0)
+    if(Markers.length == 0)
     {
         if(numb == 0)
         {
@@ -29,13 +26,11 @@ function check_moduls(numb)
 function clean_markers()
 {
     document.getElementById('notices').innerHTML = '';
-    for(var i = 0; i < markers.length; i++)
+    for(var i = 0; i < Markers.length; i++)
     {
-        markers[i].remove();
-        proverka_model[items[i]] = false;
+        Markers[i].remove();
     }
-    markers = [];
-    items = [];
+    Markers = [];
 }
 
 // Кнопка "Расствить"
