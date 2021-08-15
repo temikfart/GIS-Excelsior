@@ -18,12 +18,12 @@
                     <div class="modules">
                         <div class="blocks_item">
                             
-                            <div class="block_module" onclick="modul_click(0)">
+                            <div class="block_module" onclick="select_modul(0)">
                                 <img class = 'img_modul' src="img/модули/1.png">
                                 <p class = 'name_module'>Жилой модуль</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(1)">
+                            <div class="block_module" onclick="select_modul(1)">
                                 <img class = 'img_modul' src="img/модули/2.png">
                                 <p class = 'name_module'>Космодром</p>
                             </div>
@@ -32,12 +32,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(2)">
+                            <div class="block_module" onclick="select_modul(2)">
                                 <img class = 'img_modul' src="img/модули/3.png">
                                 <p class = 'name_module'>Центр связи</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(3)" >
+                            <div class="block_module" onclick="select_modul(3)" >
                                 <img class = 'img_modul' src="img/модули/4.png">
                                 <p class = 'name_module'>Растительный модуль</p>
                             </div>
@@ -46,12 +46,12 @@
 
                         <div class="blocks_item">
                             
-                            <div class="block_module" onclick="modul_click(4)">
+                            <div class="block_module" onclick="select_modul(4)">
                                 <img class = 'img_modul' src="img/модули/5.png">
                                 <p class = 'name_module'>Мусорный полигон</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(5)">
+                            <div class="block_module" onclick="select_modul(5)">
                                 <img class = 'img_modul' src="img/модули/6.png">
                                 <p class = 'name_module'>Дорога</p>
                             </div>
@@ -60,12 +60,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(6)">
+                            <div class="block_module" onclick="select_modul(6)">
                                 <img class = 'img_modul' src="img/модули/7.png">
                                 <p class = 'name_module'>Производственное предприятие</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(7)" >
+                            <div class="block_module" onclick="select_modul(7)" >
                                 <img class = 'img_modul' src="img/модули/8.png">
                                 <p class = 'name_module'>Военная база</p>
                             </div>
@@ -74,12 +74,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(8)">
+                            <div class="block_module" onclick="select_modul(8)">
                                 <img class = 'img_modul' src="img/модули/9.png">
                                 <p class = 'name_module'>Спортивный модуль</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(9)">
+                            <div class="block_module" onclick="select_modul(9)">
                                 <img class = 'img_modul' src="img/модули/10.png">
                                 <p class = 'name_module'> Административный  модуль</p>                 
                             </div>
@@ -88,12 +88,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(10)">
+                            <div class="block_module" onclick="select_modul(10)">
                                 <img class = 'img_modul' src="img/модули/11.png">
                                 <p class = 'name_module'>Солнечные электростанции</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(11)" >
+                            <div class="block_module" onclick="select_modul(11)" >
                                 <img class = 'img_modul' src="img/модули/12.png">
                                 <p class = 'name_module'>Ремонтная мастерская</p>
                             </div>
@@ -102,12 +102,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(12)">
+                            <div class="block_module" onclick="select_modul(12)">
                                 <img class = 'img_modul' src="img/модули/13.png">
                                 <p class = 'name_module'>Досуговое учреждение</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(13)">
+                            <div class="block_module" onclick="select_modul(13)">
                                 <img class = 'img_modul' src="img/модули/14.png">
                                 <p class = 'name_module'>Карьер</p>
                             </div>
@@ -116,12 +116,12 @@
 
                         <div class="blocks_item">
 
-                            <div class="block_module" onclick="modul_click(14)">
+                            <div class="block_module" onclick="select_modul(14)">
                                 <img class = 'img_modul' src="img/модули/15.png">
                                 <p class = 'name_module'> Медицинский модуль</p>
                             </div>
 
-                            <div class="block_module" onclick="modul_click(15)">
+                            <div class="block_module" onclick="select_modul(15)">
                                 <img class = 'img_modul' src="img/модули/16.png">
                                 <p class = 'name_module'>Образовательный модуль</p>
                             </div>
@@ -138,7 +138,9 @@
                 </div>
             </div>
             <!-- Контейнер карты -->
-            <div id="map"  onmousemove="getPosition()"></div>
+            <div id='obj'></div>
+            <div id="map"  onmousemove="getPosition()">
+            </div>
 
              <!-- Контейнер информационного блока -->
             <div class="info_panel_block">
@@ -167,8 +169,9 @@
             <p class="coords_item" id="coords_item">
                 x: 0 y: 0
             </p>
-            <button class = 'button' onclick="check_moduls(1)">Отчистить</button>
-            <button class = 'button' onclick="check_moduls(0)">Расставить</button>
+            <button class = 'button' onclick="check_moduls()">Очистить</button>
+            <button class = 'button'>Скрыть</button>
+            <button class = 'button'>Показать</button>
         </div>
     </div>
 </div>
@@ -186,14 +189,14 @@
     </div>
 </div>
 
-<a id='set_modal' href="#set"></a>
-<div class="modal_windows" id = 'set'>
-    <div class="content_modal_windows">
-      <p>На карте находятся один или несколько модулей, удалить все?</p>
-      <div class = 'flex_row'>
-        <a href="#"><button class="button" onclick="set_moduls()">Подтвердить</button></a>
-        <a href="#"><button class="button">Отмена</button></a>
-      </div>
+<a href="#select_MW" id='select_modul'></a>
+<div class="modal_windows" id = 'select_MW' >
+</div>
+
+<div id="mess_SMW">
+    <p>Поставте модуль на карту, нажав на <b>левую кнопку мыши</b></p>
+    <div class = 'flex_row'>
+        <a href="#" id = 'cancellation_SMW'><button class="button" onclick="cancellation_SMW()">Отмена</button></a>
     </div>
 </div>
 

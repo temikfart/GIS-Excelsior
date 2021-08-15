@@ -33,7 +33,7 @@ body{
 
 
 #map{
-    z-index: 1;
+    z-index: 3;
     margin-left: 2px;
     margin-right: 2px;
     height: 94vh;
@@ -216,7 +216,7 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     align-items: center;
-    z-index: 1;
+    z-index: 5;
     bottom: 5%;
 }
 .coords_block{
@@ -278,6 +278,13 @@ body{
     top: 0;
     left: 0;
     display: none;
+}
+#clean
+{
+    z-index: 4;
+}
+#select_MW
+{
     z-index: 2;
 }
 
@@ -300,6 +307,31 @@ body{
     font-family: 'Open Sans', sans-serif;
 }
 
+#mess_SMW
+{
+    z-index: 4;
+    width: 300px;
+    height: 60px;
+    text-align: center;
+    padding: 10px;
+    border: 3px solid white;
+    border-radius: 20px;
+    background-color: #770018;
+    color: white;
+    position: absolute;
+    top:0px;
+    right: 290px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    display: none;
+}
+#cancellation_SMW
+{
+    position: absolute;
+    right: 0px;
+    top:45px;
+}
+
 .modal_windows:target 
 {
     display: block;
@@ -310,4 +342,13 @@ body{
     display: flex;
     flex-direction: row;
     margin-left: 50px;
+}
+
+.box-pointer {
+    position: absolute;
+    z-index: 4;
+    width: 50px;
+}
+.box-pointer-hidden {
+    display: none;
 }
