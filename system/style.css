@@ -352,3 +352,8 @@ body{
 .box-pointer-hidden {
     display: none;
 }
+
+.btn_modul
+{
+    float: right;
+}

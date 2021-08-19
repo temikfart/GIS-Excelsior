@@ -1,13 +1,13 @@
 let click = false;
 
-function output_description(item)
+function output_description(item,id)
 {
     click = true;
     tab('one_tab');
 
     document.getElementById('one_tab').innerHTML = "<img src='"+mass_images_moduls[item]+"' class='tab_image'></img><p class='tab_text'>"+mass_module_description[item]+"</p>";
     document.getElementById('two_tab').innerHTML = "<p>Приоритет: "+mass_module_criteria[item][0]+" <br>Значимость: "+mass_module_criteria[item][1]+" <br>Рельеф местности: "+mass_module_criteria[item][2]+" <br>Опасность: "+mass_module_criteria[item][3]+" <br>Место затратность: "+mass_module_criteria[item][4]+" <br>Энергопотребление: "+mass_module_criteria[item][5]+"</p>";
-    document.getElementById('content_teh_description').innerHTML = "<p id = 'text_content_teh_description'>"+mass_teh_description[item]+"<p>";
+    document.getElementById('content_teh_description').innerHTML = "<p id = 'text_content_teh_description'>"+mass_teh_description[item]+"</p><button class='button btn_modul' onclick = 'move_modul("+item +","+ id+")'>Переместить</button><button  class = 'button btn_modul' onclick = 'delete_modul("+item +","+ id+")'>Удалить</button>";
 }
 
 
@@ -74,19 +74,21 @@ function select_modul(item)
 
 let data_coordinates = [];
 let Markers = [];
-let Index_moduls = [];
+let unic_id = 0;
+var controler;
+var mass_markers = [];
+var LayerEmpty = L.layerGroup([]); 
+var LayerMarkers;
 
-//кнопки модулей
+//создание маркера
 function modul_click(item, x, y)
 {
-    output_description(item);
-
     //ДОБАВЛЕНИЕ ИКОНОК НА КАРТУ
 
     var markerOptions = {
                         title: mass_name_modules[item],
                         clickable: true,
-                        draggable: true, 
+                        //draggable: true, 
 
                         // Иконка
                         icon: L.icon(
@@ -106,49 +108,64 @@ function modul_click(item, x, y)
   
     marker.addTo(map);
 
-    marker.on('mousedown',function(){
-        output_description(item);
-        });
-
-    Markers[Markers.length] = marker;
     // Записывает id  маркера
     if(data_coordinates[item] == null)
     {
         data_coordinates[item] = [];
+        Markers[item] = [];
     }
-    var id = data_coordinates[item].length;
-    Index_moduls[Index_moduls.length] = id;  
-    data_coordinates[item][id] = [marker.getLatLng().lat, marker.getLatLng().lng]; //записывает первоначальные координаты каждого модуля на карте в массив
+    var id = unic_id;
+    unic_id++;
+    Markers[item][id] = marker;  
+    data_coordinates[item][id] = [x, y]; //записывает первоначальные координаты каждого модуля на карте в массив
+
+    output_description(item, id); //переключение информации в блоках
+    marker.on('mousedown',function(){
+        output_description(item, id);
+        });
 
     // Подсказки при перемещении
     var elem_hints = document.getElementById('notices');
 
-    marker.on('dragend', function() 
+    var text = '';
+
+    //перебирает и выводит все координаты модулей которые находятся на карте (пока для показа)
+    data_coordinates.forEach((modul_coord, index) => 
     {
-        data_coordinates[item][id] = [marker.getLatLng().lat, marker.getLatLng().lng]; //перезаписывает координаты каждого модуля на карте в массиве
-
-        var text = '';
-
-        //перебирает и выводит все координаты модулей которые находятся на карте (пока для показа)
-        data_coordinates.forEach((modul_coord, index) => 
+        modul_coord.forEach((coord, id_modul) =>
         {
-            modul_coord.forEach((coord, id_modul) =>
+            text += mass_name_modules[index] + "["+id_modul+"]: ";
+
+            if((coord[0] > 3320)||( coord[1] > 1442)||(coord[0] < 0)||(coord[1] < 0))
             {
-                text += mass_name_modules[index] + "["+(id_modul+1)+"]: ";
-
-                if((coord[0] > 3320)||( coord[1] > 1442)||(coord[0] < 0)||(coord[1] < 0))
-                {
-                    text += ": Здесь нельзя расположить модуль\n";
-                }
-                else
-                {
-                    text += 'x: '+coord[0].toFixed(4)+', y: '+coord[1].toFixed(4)+"\n";
-                }
-            })
-        });
-
-        elem_hints.innerText = text;
+                text += ": Здесь нельзя расположить модуль\n";
+            }
+            else
+            {
+                text += 'x: '+coord[0].toFixed(4)+', y: '+coord[1].toFixed(4)+"\n";
+            }
+        })
     });
+
+    elem_hints.innerText = text;
+
+    controller()
+}
+
+//Удаление модуля
+function delete_modul(item, id)
+{
+    Markers[item][id].remove();
+    Markers[item].splice(id, 1);
+    data_coordinates[item].splice(id, 1);
+    controller()
+}
+
+//Перемещение модуля
+function move_modul(item, id)
+{
+    delete_modul(item, id);
+    select_modul(item);
 }
 
 //Механика кнопок вкладок
@@ -175,4 +192,29 @@ function tab(numb)
             document.getElementById('tablinks2').style.color = 'black';
         }
     }
+}
+
+//Kонтроллер "Скрыть, Показать"
+function controller()
+{
+    mass_markers = [];
+    Markers.forEach((markers_modul) => 
+    {
+        markers_modul.forEach((marker_one) =>
+        {
+            mass_markers [mass_markers.length] = marker_one;
+        });
+    });
+
+    LayerMarkers = L.layerGroup(mass_markers);
+    
+    if(controler)
+    {
+        map.removeControl(controler);
+    }
+    var overlayMaps = {
+        "Скрыть": LayerEmpty,
+        "Показать": LayerMarkers
+    };
+    controler = L.control.layers(overlayMaps).addTo(map);
 }

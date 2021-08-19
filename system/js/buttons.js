@@ -23,13 +23,34 @@ function check_moduls()
 
 function clean_markers()
 {
-    document.getElementById('notices').innerHTML = '';
-    for(var i = 0; i < Markers.length; i++)
+
+    if(controler)
     {
-        Markers[i].remove();
+        map.removeControl(controler);
     }
+    
+    document.getElementById('notices').innerHTML = '';
+
+    Markers.forEach((markers_modul) => 
+    {
+        markers_modul.forEach((marker) =>
+        {
+            marker.remove();
+        });
+    });
     Markers = [];
     data_coordinates = [];
-    Index_moduls = [];
 }
 
+//Кнопка "Скрыть"
+
+    var markerOptions = {
+    
+        // Иконка
+        icon: L.icon({
+                        iconUrl: mass_imges_markers[0],
+                        iconSize: [50, 80],
+                        iconAnchor: [0,80],
+                        popupAnchor: [25,-80]
+                    })
+            };
