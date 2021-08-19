@@ -42,15 +42,3 @@ function clean_markers()
     data_coordinates = [];
 }
 
-//Кнопка "Скрыть"
-
-    var markerOptions = {
-    
-        // Иконка
-        icon: L.icon({
-                        iconUrl: mass_imges_markers[0],
-                        iconSize: [50, 80],
-                        iconAnchor: [0,80],
-                        popupAnchor: [25,-80]
-                    })
-            };
