@@ -6,8 +6,31 @@ function output_description(item,id)
     tab('one_tab');
 
     document.getElementById('one_tab').innerHTML = "<img src='"+mass_images_moduls[item]+"' class='tab_image'></img><p class='tab_text'>"+mass_module_description[item]+"</p>";
-    document.getElementById('two_tab').innerHTML = "<p>Приоритет: "+mass_module_criteria[item][0]+" <br>Значимость: "+mass_module_criteria[item][1]+" <br>Рельеф местности: "+mass_module_criteria[item][2]+" <br>Опасность: "+mass_module_criteria[item][3]+" <br>Место затратность: "+mass_module_criteria[item][4]+" <br>Энергопотребление: "+mass_module_criteria[item][5]+"</p>";
-    document.getElementById('content_teh_description').innerHTML = "<p id = 'text_content_teh_description'>"+mass_teh_description[item]+"</p><button class='button btn_modul' onclick = 'move_modul("+item +","+ id+")'>Переместить</button><button  class = 'button btn_modul' onclick = 'delete_modul("+item +","+ id+")'>Удалить</button>";
+    document.getElementById('two_tab').innerHTML = "<p class='tab_text'>Приоритет: <b>"+mass_module_criteria[item][0]+"</b><br>Значимость: <b>"+mass_module_criteria[item][1]+"</b><br>Рельеф местности: <b>"+mass_module_criteria[item][2]+"</b><br>Опасность: <b>"+mass_module_criteria[item][3]+"</b><br>Место затратность: <b>"+mass_module_criteria[item][4]+"</b><br>Энергопотребление: <b>"+mass_module_criteria[item][5]+"</b></p>";
+    document.getElementById('content_teh_description').innerHTML = "<p id = 'text_content_teh_description'>"+mass_teh_description[item]+"</p>";
+    document.getElementById('button_to_marker').innerHTML = "<button id ='button_delete_modul' class='buttonMA' onclick = 'delete_modul("+item +","+ id+")'></button><button class='buttonMA' id = 'button_move_modul' onclick = 'move_modul("+item +","+ id+")'></button>";
+}
+
+//Механика кнопок вкладок
+function tab(numb) 
+{
+    if(click == true)
+    {
+        if(numb == 'one_tab')
+        {
+            document.getElementById('one_tab').style.display = "block";
+            document.getElementById('tablinks1').className = "tablinks_active";
+            document.getElementById('two_tab').style.display = "none";
+            document.getElementById('tablinks2').className = "tablinks_block";
+        }
+        else
+        {
+            document.getElementById('one_tab').style.display = "none";
+            document.getElementById('tablinks1').className = "tablinks_block";
+            document.getElementById('two_tab').style.display = "block";
+            document.getElementById('tablinks2').className = "tablinks_active";
+        }
+    }
 }
 
 
@@ -16,7 +39,8 @@ var check_cancellation_SMW = true;
 function select_modul(item)
 {
     check_cancellation_SMW = true;
-    document.getElementById('mess_SMW').style.display = "block";
+    document.getElementById('text_MSMW').innerHTML = "Что бы поставить <i>"+mass_name_modules[item].toLowerCase()+"</i>, нажмите на <b>левую кнопку мыши</b>";
+    document.getElementById('checkbox_mess_SMW').checked = true;
     document.getElementById('select_modul').click();
     var boxElem = document.getElementById('map');
     var obj = document.getElementById('obj');
@@ -36,8 +60,8 @@ function select_modul(item)
                     pointerElem.classList.remove('box-pointer-hidden');
                 }
 
-                var Mx = mouseX-345;
-                var My = mouseY-85;
+                var Mx = mouseX-333;
+                var My = mouseY-83;
                 pointerElem.style.transform = 'translate3d(' + Mx + 'px, ' + My + 'px, 30px)';
             } 
             else 
@@ -61,14 +85,30 @@ function select_modul(item)
     var check_SM = true;
     map.on('click', function () //при клике на карте
     {
-        if((check_SM == true)&&(check_cancellation_SMW == true))
+        var CMC = check_module_coor(item);//проверка координатов модуля (находится в файле аналагичном названии функции)
+
+        if(CMC == true)
         {
-            obj.innerHTML = '';
-            modul_click(item, x_in_map, y_in_map);
-            document.getElementById('cancellation_SMW').click();
-            document.getElementById('mess_SMW').style.display = "none";
+            if((check_SM == true)&&(check_cancellation_SMW == true))
+            {
+                obj.innerHTML = '';
+                document.getElementById('cancellation_SMW').click();
+                document.getElementById('checkbox_mess_SMW').checked = false;
+
+                put_modul(item, x_in_map, y_in_map);
+            }
+            check_SM = false;//что бы модуль ставился только один    ///КОГДА ОТМЕНА ТОЖЕ ДЕЛАТЬ ЛОЖЬ
         }
-        check_SM = false;//что бы модуль ставился только один
+        else
+        {
+            document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
+            document.getElementById('error_put_modul').checked = true;
+            setTimeout(close_error_put_modul, 2000);
+            function close_error_put_modul()
+            {
+                document.getElementById('error_put_modul').checked = false;
+            }
+        }
     });
 } 
 
@@ -80,19 +120,15 @@ var mass_markers = [];
 var LayerEmpty = L.layerGroup([]); 
 var LayerMarkers;
 
-//создание маркера
-function modul_click(item, x, y)
+//Создание маркера
+function put_modul(item, x, y)
 {
-    //ДОБАВЛЕНИЕ ИКОНОК НА КАРТУ
-
     var markerOptions = {
                         title: mass_name_modules[item],
                         clickable: true,
-                        //draggable: true, 
+                        draggable: false, //перемещение
 
-                        // Иконка
-                        icon: L.icon(
-                                    {
+                        icon: L.icon({ //настройки иконки
                                         iconUrl: mass_imges_markers[item],
                                         iconSize: [50, 80],
                                         iconAnchor: [0,80],
@@ -100,8 +136,7 @@ function modul_click(item, x, y)
                                     })
                             };
   
-    // Значение координат для иконки
-    var marker = L.marker([x, y], markerOptions);
+    var marker = L.marker([x, y], markerOptions);// Значение координат для иконки
   
     // Надпись на иконку
     marker.bindPopup(mass_name_modules[item]).openPopup();
@@ -119,7 +154,8 @@ function modul_click(item, x, y)
     Markers[item][id] = marker;  
     data_coordinates[item][id] = [x, y]; //записывает первоначальные координаты каждого модуля на карте в массив
 
-    output_description(item, id); //переключение информации в блоках
+    //Переключение информации в блоках
+    output_description(item, id); 
     marker.on('mousedown',function(){
         output_description(item, id);
         });
@@ -166,32 +202,6 @@ function move_modul(item, id)
 {
     delete_modul(item, id);
     select_modul(item);
-}
-
-//Механика кнопок вкладок
-function tab(numb) 
-{
-    if(click == true)
-    {
-        if(numb == 'one_tab')
-        {
-            document.getElementById('one_tab').style.display = "block";
-            document.getElementById('tablinks1').style.background ='#F3AC04';
-            document.getElementById('tablinks1').style.color = 'black';
-            document.getElementById('two_tab').style.display = "none";
-            document.getElementById('tablinks2').style.background ='#770018';
-            document.getElementById('tablinks2').style.color = 'white';
-        }
-        else
-        {
-            document.getElementById('one_tab').style.display = "none";
-            document.getElementById('tablinks1').style.background ='#770018';
-            document.getElementById('tablinks1').style.color = 'white';
-            document.getElementById('two_tab').style.display = "block";
-            document.getElementById('tablinks2').style.background ='#F3AC04';
-            document.getElementById('tablinks2').style.color = 'black';
-        }
-    }
 }
 
 //Kонтроллер "Скрыть, Показать"
