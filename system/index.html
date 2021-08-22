@@ -6,165 +6,200 @@
     <title>Excelsior</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton&effect=neon">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="lib/leaflet.css"> <!-- css билблиотеки //заменить путь на свой  -->
+    <link rel="stylesheet" href="lib/leaflet.css"> <!-- css билблиотеки  -->
 </head>
 <body>
         <!-- Главный контейнер, в него будет обернуто все приложение  -->
-        <div class="main_container" id="main_container" onmousemove="getHelp()">
+        <div class="main_container" id="main_container">
              <!-- Контейнер управляющего блока -->
             <div class="control_panel_block">
                 <div class="main_control_block">
-                    <p class = 'title_block'>Модули</p>
+                    <h1 class = 'title_block'>Модули</h1>
                     <div class="modules">
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(0,'img/модули/1.png')">
-                                <img class = 'img_modul' src="img/модули/1.png">
+                            
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(0)">
+                                    <img class = 'img_modul' src="img/модули/1.png">
+                                </div>
                                 <p class = 'name_module'>Жилой модуль</p>
                             </div>
-                            <div class="block_module" onclick="modul_click(1,'img/модули/2.png')">
-                                <img class = 'img_modul' src="img/модули/2.png">
-                                <p class = 'name_module'>
-                                    Космодром
-                                </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(1)">
+                                    <img class = 'img_modul' src="img/модули/2.png">
+                                </div>
+                                <p class = 'name_module'>Космодром</p>
+                            </div>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(2)">
+                                    <img class = 'img_modul' src="img/модули/3.png">
+                                </div>
+                                <p class = 'name_module'>Центр связи</p>
+                            </div>
                         </div>
-                        </div>
+
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(2,'img/модули/3.png')">
-                                <img class = 'img_modul' src="img/модули/3.png">
-                                <p class = 'name_module'>
-                                    Центр связи
-                                </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(3)" >
+                                    <img class = 'img_modul' src="img/модули/4.png">
+                                </div>
+                                <p class = 'name_module'>Растительный модуль</p>
                             </div>
-                            <div class="block_module" onclick="modul_click(3,'img/модули/4.png')" >
-                                <img class = 'img_modul' src="img/модули/4.png">
-                                <p class = 'name_module'>
-                                    Растительный модуль
-                                </p>
+                            
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(4)">
+                                    <img class = 'img_modul' src="img/модули/5.png">
+                                </div>
+                                <p class = 'name_module'>Мусорный полигон</p>
                             </div>
+
+                            <div class='button_module'>
+                                <div class="block_block">
+                                    <img class = 'block_img_modul' src="img/модули/6.png">
+                                </div>
+                                <p class = 'name_module'>Дорога</p>
+                            </div>
+
                         </div>
+
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(4,'img/модули/5.png')">
-                                <img class = 'img_modul' src="img/модули/5.png">
-                                <p class = 'name_module'>
-                                    Мусорный полигон
-                                </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(6)">
+                                    <img class = 'img_modul' src="img/модули/7.png">
+                                </div>
+                                <p class = 'name_module'>Производ. предприятие</p>
                             </div>
-                            <div class="block_module" onclick="modul_click(5,'img/модули/6.png')">
-                                <img class = 'img_modul' src="img/модули/6.png">
-                                <p class = 'name_module'>
-                                    Дорога                            </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(7)" >
+                                    <img class = 'img_modul' src="img/модули/8.png">
+                                </div>
+                                <p class = 'name_module'>Военная база</p>
                             </div>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(8)">
+                                    <img class = 'img_modul' src="img/модули/9.png">
+                                </div>
+                                <p class = 'name_module'>Спортивный модуль</p>
+                            </div>
+
                         </div>
+
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(6,'img/модули/7.png')">
-                                <img class = 'img_modul' src="img/модули/7.png">
-                                <p class = 'name_module'>
-                                    Производственное предприятие                            </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(9)">
+                                    <img class = 'img_modul' src="img/модули/10.png">              
+                                </div>
+                                <p class = 'name_module'> Администр.  модуль</p>  
                             </div>
-                            <div class="block_module" onclick="modul_click(7,'img/модули/8.png')" >
-                                <img class = 'img_modul' src="img/модули/8.png">
-                                <p class = 'name_module'>
-                                    Военная база                            </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(10)">
+                                    <img class = 'img_modul' src="img/модули/11.png">
+                                </div>
+                                <p class = 'name_module'>Солнечные электростанции</p>
                             </div>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(11)" >
+                                    <img class = 'img_modul' src="img/модули/12.png">
+                                </div>
+                                <p class = 'name_module'>Ремонтная мастерская</p>
+                            </div>
+
                         </div>
+
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(8,'img/модули/9.png')">
-                                <img class = 'img_modul' src="img/модули/9.png">
-                                <p class = 'name_module'>
-                                    Спортивный модуль                            </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(12)">
+                                    <img class = 'img_modul' src="img/модули/13.png">
+                                </div>
+                                <p class = 'name_module'>Досуговое учреждение</p>
                             </div>
-                            <div class="block_module" onclick="modul_click(9,'img/модули/10.png')">
-                                <img class = 'img_modul' src="img/модули/10.png">
-                                <p class = 'name_module'>
-                                    Административный  модуль                        
+
+                            <div class='button_module'>
+                                <div class="block_block">
+                                    <img class = 'block_img_modul' src="img/модули/14.png">
+                                </div>
+                                <p class = 'name_module'>Карьер</p>
                             </div>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(14)">
+                                    <img class = 'img_modul' src="img/модули/15.png">
+                                </div>
+                                <p class = 'name_module'> Медицинский модуль</p>
+                            </div>
+
                         </div>
+
                         <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(10,'img/модули/11.png')">
-                                <img class = 'img_modul' src="img/модули/11.png">
-                                <p class = 'name_module'>
-                                    Солнечные электростанции                           
-                                </p>
+
+                            <div class='button_module'>
+                                <div class="block_module" onclick="select_modul(15)">
+                                    <img class = 'img_modul' src="img/модули/16.png">
+                                </div>
+                                <p class = 'name_module'>Образовательный модуль</p>
                             </div>
-                            <div class="block_module" onclick="modul_click(11,'img/модули/12.png')" >
-                                <img class = 'img_modul' src="img/модули/12.png">
-                                <p class = 'name_module'>
-                                    Ремонтная мастерская
-                                </p>
-                            </div>
+
                         </div>
-                        <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(12,'img/модули/13.png')">
-                                <img class = 'img_modul' src="img/модули/13.png">
-                                <p class = 'name_module'>
-                                    Досуговое учреждение
-                                </p>
-                            </div>
-                            <div class="block_module" onclick="modul_click(13,'img/модули/14.png')">
-                                <img class = 'img_modul' src="img/модули/14.png">
-                                <p class = 'name_module'>
-                                    Карьер
-                                </p>
-                            </div>
-                        </div>
-                        <div class="blocks_item">
-                            <div class="block_module" onclick="modul_click(14,'img/модули/15.png')">
-                            <img class = 'img_modul' src="img/модули/15.png">
-                            <p class = 'name_module'>
-                                Медицинский модуль
-                            </p>
-                        </div>
-                        <div class="block_module" onclick="modul_click(15,'img/модули/16.png')">
-                            <img class = 'img_modul' src="img/модули/16.png">
-                            <p class = 'name_module'>
-                                Образовательный модуль
-                            </p>
-                        </div></div>
-                        
-                      
-                      
-                      
-                      
-                        
+                         
                     </div>
                 </div>
                 <div class="sub_control_block">
-                    <p class = 'title_block'>Подсказки</p>
-                    <p class="notices" id="notices">
-                        a
-                    </p>
+                    <h1 class = 'title_block'>Подсказки</h1>
+                    <div class="content_sub_control_block">
+                        <p id="notices"></p>
+                    </div>
                 </div>
             </div>
             <!-- Контейнер карты -->
-            <div id="map"  onmousemove="getPosition()"></div>
-                <!-- Подключение скриптов библиотеки (путь скриптов заменить на свой)  -->
-                <script language="JavaScript" src="lib/leaflet.js"></script>
-                <script language="JavaScript" src="lib/fg.js"></script>
-
-                <!-- Подключение карты  -->
-                <script language="JavaScript" src = "include_map.js"></script>
+            <div id='obj'></div>
+            <div id="map"  onmousemove="getPosition()">
+            </div>
 
              <!-- Контейнер информационного блока -->
             <div class="info_panel_block">
                 <div class="main_info_block">
-                    <p class = 'title_block'>Описание модуля</p>
+                    <h1 class = 'title_block'>Описание модуля</h1>
                     <!-- Вкладки -->
-                    <div class="tab">
-                        <button id="tablinks1" onclick="tab('one_tab')">Описание</button>
-                        <button id="tablinks2" onclick="tab('two_tab')">Критерии</button>
-                    </div>
+                    <div class="conteiner">
+                        <div class="tab">
+                            <button id="tablinks1" class = 'tablinks_active' onclick="tab('one_tab')">Описание</button>
+                            <button id="tablinks2" class = 'tablinks_active' onclick="tab('two_tab')">Критерии</button>
+                        </div>
 
-                    <!-- Контейнеры вкладок -->  
-                    <div id="one_tab" class="tabcontent"></div>
-                      
-                    <div id="two_tab" class="tabcontent"></div>
-                    
-                    <!-- Подключение скрипта кнопок модулей  -->
-                    <script language="JavaScript" src ="button_modules.js"></script>
+                        <!-- Контейнеры вкладок -->  
+                        <div id="one_tab" class="tabcontent"></div>
+                        
+                        <div id="two_tab" class="tabcontent"></div>
+                    </div>
                 </div>
                 <div class="sub_info_block">
-                    <p class = 'title_block'>Техническое описание</p>
-                    <p id ='text_content_teh_description' style="color:#fff"></p>
+                    <h1 class = 'title_block'>Техническое описание</h1>
+                    <div id = 'content_teh_description'></div>
+                </div>
+            </div>
+            <!--Координаты  -->
+    <div class="coords_container">
+        <div class="coords_block">
+            <p class="coords_item" id="coords_item">
+                x: 0 y: 0
+            </p>
+            <div class = "panel_button">
+                <button class = 'button button_clean' onclick="check_moduls()"></button>
+                <button id ="button_hide" class = 'button_active' onclick="show_hide('hide')"></button>
+                <button id = "button_show" class = 'button_block' onclick="show_hide('show')"></button>
+                <div id = "button_to_marker">
+                    <button id ="button_delete_modul" class="buttonDMA"></button>
+                    <button id = "button_move_modul" class="buttonDMA"></button>
                 </div>
             </div>
             <!--Координаты  -->
@@ -176,8 +211,53 @@
         </div>
     </div>
         </div>
-   
-      
-    <script src="main.js"></script>
+    </div>
+</div>
+
+<!-- МОДАЛЬНЫЕ ОКНА -->
+
+<!-- модальное окно на кнопку отчистить -->
+<a href="#clean" id='clean_modal'></a>
+<div class="modal_windows" id = 'clean' >
+</div>
+
+<input type='checkbox' id='checkbox_content_modal_windows'>
+<div class="content_modal_windows">
+    <p>Вы действительно хотите отчистить все?</p>
+      <a href="#"><button class="button" onclick="clean_markers()">Подтвердить</button></a>
+      <a href="#" id = 'cancellation_SMW'><button class="button button_close"  onclick="cancellation_SMW(2)"></button></a>
+  </div>
+
+<!-- модальное окно на поставить модуль -->
+<a href="#select_MW" id='select_modul'></a>
+<div class="modal_windows" id = 'select_MW' >
+</div>
+<input type='checkbox' id='checkbox_mess_SMW'>
+<div id="mess_SMW">
+    <p class="text_mess_SMW" id ="text_MSMW" ></p>
+    <a href="#" id = 'cancellation_SMW'><button class="button button_close" onclick="cancellation_SMW(1)"></button></a>
+</div>
+
+<!-- модальное окно на ошибку поставки модуля -->
+<input type='checkbox' id='error_put_modul'>
+<div id="mess_error_PM">
+    <p class="text_mess_SMW" id ="text_error_MSMW"></p>
+</div>
+
+
+
+    <!-- Подключение скриптов библиотеки (путь скриптов заменить на свой)  -->
+    <script language="JavaScript" src="lib/leaflet.js"></script>
+    <script language="JavaScript" src="lib/fg.js"></script>
+    <!-- Подключение скрипта кнопок модулей  -->
+    <script language="JavaScript" src ="js/modules.js"></script>
+    <!-- Подключение карты  -->
+    <script language="JavaScript" src = "js/include_map.js"></script>
+    <!-- Подключение данных модулей  -->
+    <script language="JavaScript" src = "js/data.js"></script>
+    <!-- Подключение кнопок панели  -->
+    <script language="JavaScript" src="js/buttons.js"></script>
+    <!-- Подключение функции проверки координатов модуля  -->
+    <script language="JavaScript" src="js/check_module_coor.js"></script>
 </body>
 </html>

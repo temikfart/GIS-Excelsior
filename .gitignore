@@ -4,3 +4,4 @@ documentation/main.pdf
 *.log
 *.out
 *.gz
+.idea/
