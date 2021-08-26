@@ -101,12 +101,15 @@ function select_modul(item)
         }
         else
         {
-            document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
-            document.getElementById('error_put_modul').checked = true;
-            setTimeout(close_error_put_modul, 2000);
-            function close_error_put_modul()
+            if((check_SM == true)&&(check_cancellation_SMW == true))
             {
-                document.getElementById('error_put_modul').checked = false;
+                document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
+                document.getElementById('error_put_modul').checked = true;
+                setTimeout(close_error_put_modul, 2000);
+                function close_error_put_modul()
+                {
+                    document.getElementById('error_put_modul').checked = false;
+                }
             }
         }
     });
@@ -158,34 +161,50 @@ function put_modul(item, x, y)
     output_description(item, id); 
     marker.on('mousedown',function(){
         output_description(item, id);
-        });
+        show_coord_modul(item,id);
+    });
 
-    // Подсказки при перемещении
+    show_coord_modul();
+    controller()
+}
+
+//перебирает и выводит все координаты модулей которые находятся на карте (пока для показа)
+function show_coord_modul(item = -10, id = -10)
+{
     var elem_hints = document.getElementById('notices');
 
     var text = '';
-
-    //перебирает и выводит все координаты модулей которые находятся на карте (пока для показа)
     data_coordinates.forEach((modul_coord, index) => 
     {
         modul_coord.forEach((coord, id_modul) =>
         {
-            text += mass_name_modules[index] + "["+id_modul+"]: ";
-
-            if((coord[0] > 3320)||( coord[1] > 1442)||(coord[0] < 0)||(coord[1] < 0))
+            if(item >= 0)
             {
-                text += ": Здесь нельзя расположить модуль\n";
+                if((item == index)&&(id == id_modul))
+                {
+                    text += "<b>"+mass_name_modules[index] + "["+id_modul+"]:<br>";
+                }
+                else
+                {
+                    text += mass_name_modules[index] + "["+id_modul+"]:<br>";
+                }
             }
             else
             {
-                text += 'x: '+coord[0].toFixed(4)+', y: '+coord[1].toFixed(4)+"\n";
+                text += mass_name_modules[index] + "["+id_modul+"]:<br>";
+            }
+
+            if((coord[0] > 3320)||( coord[1] > 1442)||(coord[0] < 0)||(coord[1] < 0))
+            {
+                text += ": Здесь нельзя расположить модуль</b><br>";
+            }
+            else
+            {
+                text += 'x: '+coord[0].toFixed(4)+', y: '+coord[1].toFixed(4)+"</b><br>";
             }
         })
     });
-
-    elem_hints.innerText = text;
-
-    controller()
+    elem_hints.innerHTML = text;
 }
 
 //Удаление модуля

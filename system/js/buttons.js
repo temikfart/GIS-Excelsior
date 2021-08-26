@@ -53,20 +53,28 @@ function clean_markers()
         if(fun == "show")
         {
             document.getElementById("button_hide").className = "button_active";
-            document.getElementById("button_hide").style.background = "url('img/иконки/hide_black.png') no-repeat center";
-            document.getElementById("button_hide").style.backgroundSize = "20px 20px";
             document.getElementById("button_show").className = "button_block";
-            document.getElementById("button_show").style.background = "url('img/иконки/show.png') no-repeat center";
-            document.getElementById("button_show").style.backgroundSize = "20px 20px";
+            document.getElementsByClassName("leaflet-control-layers-selector")[1].click();
         }
         else if(fun == "hide")
         {
             document.getElementById("button_hide").className = "button_block";
-            document.getElementById("button_hide").style.background = "url('img/иконки/hide.png') no-repeat center";
-            document.getElementById("button_hide").style.backgroundSize = "20px 20px";
             document.getElementById("button_show").className = "button_active";
-            document.getElementById("button_show").style.background = "url('img/иконки/show_black.png') no-repeat center";
-            document.getElementById("button_show").style.backgroundSize = "20px 20px";
+            document.getElementsByClassName("leaflet-control-layers-selector")[0].click();
         }
+    }
+}
+
+//Кнопку "Zoom"
+
+function zoom(fun)
+{
+    if(fun == "in")
+    {
+        document.getElementsByClassName('leaflet-control-zoom-in')[0].click();
+    }
+    else if(fun == "out")
+    {
+        document.getElementsByClassName('leaflet-control-zoom-out')[0].click();
     }
 }

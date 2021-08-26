@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="sub_control_block">
-                    <h1 class = 'title_block'>Подсказки</h1>
+                    <h1 class = 'title_block'>Координаты модулей</h1>
                     <div class="content_sub_control_block">
                         <p id="notices"></p>
                     </div>
@@ -181,6 +181,7 @@
                         
                         <div id="two_tab" class="tabcontent"></div>
                     </div>
+            
                 </div>
                 <div class="sub_info_block">
                     <h1 class = 'title_block'>Техническое описание</h1>
@@ -194,22 +195,18 @@
                 x: 0 y: 0
             </p>
             <div class = "panel_button">
-                <button class = 'button button_clean' onclick="check_moduls()"></button>
-                <button id ="button_hide" class = 'button_active' onclick="show_hide('hide')"></button>
-                <button id = "button_show" class = 'button_block' onclick="show_hide('show')"></button>
+                <button class = 'button button_clean' onclick="check_moduls()" title="Очистить"></button>
+                <button id ="button_hide" class = 'button_active' onclick="show_hide('hide')" title="Скрыть"></button>
+                <button id = "button_show" class = 'button_block' onclick="show_hide('show')" title ="Показать"></button>
+                <div class="button_zoom">
+                    <button class = 'button button_zoom_in' onclick="zoom('in')" title ="Приблизить"></button>
+                    <button class = 'button button_zoom_out' onclick="zoom('out')" title ="Отдалить"></button>
+                </div>
                 <div id = "button_to_marker">
-                    <button id ="button_delete_modul" class="buttonDMA"></button>
-                    <button id = "button_move_modul" class="buttonDMA"></button>
+                    <button id ="button_delete_modul" class="buttonDMA" title="Удалить"></button>
+                    <button id = "button_move_modul" class="buttonDMA" title="Переместить"></button>
                 </div>
             </div>
-            <!--Координаты  -->
-    <div class="coords_container">
-        <div class="coords_block">
-            <p class="coords_item" id="coords_item">
-                coords: 
-            </p>
-        </div>
-    </div>
         </div>
     </div>
 </div>
@@ -259,5 +256,6 @@
     <script language="JavaScript" src="js/buttons.js"></script>
     <!-- Подключение функции проверки координатов модуля  -->
     <script language="JavaScript" src="js/check_module_coor.js"></script>
+
 </body>
 </html>

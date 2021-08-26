@@ -42,6 +42,10 @@ p
     width: 23%;
 }
 
+.button_zoom
+{
+    margin-left: 20px;
+}
 #map{
     z-index: 3;
     margin-left: 2px;
@@ -51,10 +55,10 @@ p
     background-size: cover;
     background-color: #EBECF0;
 }
+
 .info_panel_block{
     height: 94vh;
     width: 20%;
-    border-radius: 30px;
 }
 
 .sub_info_block
@@ -137,15 +141,6 @@ p
     transition: all 0.2s ease-in-out;
     cursor: pointer;
 }
-.blocks_item{
-    width: 100%;
-    height: 30vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .block_module, .tab_image, .tablinks_block, .button, .button_active, .buttonMA
 {
@@ -159,11 +154,15 @@ p
 {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
 }
-.block_module:hover .img_modul,.block_module:active .img_modul{
+.block_module:hover .img_modul,.block_module:active .img_modul,.button_clean:hover,.button_clean:active,
+.buttonDMA,.buttonMA:active,.buttonMA:hover, .button_zoom_in:hover,.button_zoom_in:active,.button_zoom_out:active,.button_zoom_out:hover,
+.button_block
+{
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%); 
 }
-.img_modul{
+.img_modul,.button_clean,.buttonMA, .button_zoom_in, .button_zoom_out,.button_active
+{
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%); 
 }
@@ -317,25 +316,43 @@ p
 
 #button_show
 {
+    width: 40px;
     background: url('img/иконки/show.png') no-repeat center;
     background-size: 20px 20px;
 }
 
 #button_hide
 {
-    background: url('img/иконки/hide_black.png') no-repeat center;
+    width: 40px;
+    background: url('img/иконки/hide.png') no-repeat center;
     background-size: 20px 20px;
 }
 
 #button_delete_modul
 {
+    width: 40px;
     background: url('img/иконки/delete.png') no-repeat center;
     background-size: 20px 20px;
 }
 
 #button_move_modul
 {
+    width: 40px;
     background: url('img/иконки/move.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+.button_zoom_in
+{
+    width: 40px;
+    background: url('img/иконки/zoom_in.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+.button_zoom_out
+{
+    width: 40px;
+    background: url('img/иконки/zoom_out.png') no-repeat center;
     background-size: 20px 20px;
 }
 
@@ -367,6 +384,11 @@ p
 #select_MW
 {
     z-index: 2;
+}
+
+.leaflet-control-layers
+{
+    display: none;
 }
 
 .content_modal_windows 
@@ -406,7 +428,7 @@ p
     top:-90px;
     right: 630px;
 }
-#error_put_modul,#checkbox_mess_SMW,.box-pointer-hidden, #checkbox_content_modal_window
+#error_put_modul,#checkbox_mess_SMW,.box-pointer-hidden, #checkbox_content_modal_window,.leaflet-control-zoom
 {
     display: none;
 }
