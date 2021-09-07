@@ -142,26 +142,24 @@ p
     cursor: pointer;
 }
 
-.block_module, .tab_image, .tablinks_block, .button, .button_active, .buttonMA
+.block_module, .tab_image, .tablinks_block, .button, .button_active
 {
     box-shadow: -5px -5px 20px #fff,  5px 5px 20px #BABECC;
 }
-.block_module:hover, .tablinks_block:hover , .button:hover, .button_active:hover, .buttonMA:hover
+.block_module:hover, .tablinks_block:hover , .button:hover, .button_active:hover
 {
     box-shadow: -2px -2px 5px #fff, 2px 2px 5px #BABECC;
 }
-.block_module:active, .button:active, .block_block, .tablinks_active,#mess_error_PM, #mess_SMW, .button_block,.buttonDMA,.buttonMA:active
+.block_module:active, .button:active, .block_block, .tablinks_active,#mess_error_PM, #mess_SMW, .button_block,.buttonDMA
 {
     box-shadow: inset 1px 1px 2px #BABECC, inset -1px -1px 2px #fff;
 }
-.block_module:hover .img_modul,.block_module:active .img_modul,.button_clean:hover,.button_clean:active,
-.buttonDMA,.buttonMA:active,.buttonMA:hover, .button_zoom_in:hover,.button_zoom_in:active,.button_zoom_out:active,.button_zoom_out:hover,
-.button_block
+.block_module:hover .img_modul,.block_module:active .img_modul,.img_red:hover,.img_red:active,.buttonDMA,.button_block
 {
     filter: grayscale(0%);
     -webkit-filter: grayscale(0%); 
 }
-.img_modul,.button_clean,.buttonMA, .button_zoom_in, .button_zoom_out,.button_active
+.img_modul,.img_red,.button_active
 {
     filter: grayscale(100%);
     -webkit-filter: grayscale(100%); 
@@ -287,7 +285,7 @@ p
     font-weight: 600;
 }
 
-.button, #button_show, #button_hide,#button_delete_modul, #button_move_modul
+.button, #button_show, #button_hide,#button_delete_modul, #button_move_modul,.activ_bd
 {
     border-radius: 20px;
     background-color:#EBECF0;
@@ -306,12 +304,11 @@ p
     background-color: #EBECF0;
 }
 
-.button_clean
+.button_clean,#delete_drow
 {
     width: 40px;
     background: url('img/иконки/clean.png') no-repeat center;
     background-size: 20px 20px;
-    background-color: #EBECF0;
 }
 
 #button_show
@@ -328,10 +325,33 @@ p
     background-size: 20px 20px;
 }
 
+.leaflet-div-icon
+{
+    border: none !important;
+    background: black !important;
+    width: 20px !important;
+    height: 20px!important;
+    border-radius: 100%;
+}
+
 #button_delete_modul
 {
     width: 40px;
     background: url('img/иконки/delete.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+#button_back
+{
+    width: 40px;
+    background: url('img/иконки/back.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+#button_edit
+{
+    width: 40px;
+    background: url('img/иконки/edit.png') no-repeat center;
     background-size: 20px 20px;
 }
 
@@ -353,6 +373,27 @@ p
 {
     width: 40px;
     background: url('img/иконки/zoom_out.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+#button_drow
+{
+    width: 40px;
+    background: url('img/иконки/drow.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+#button_cancel1,#button_cancel2
+{
+    width: 40px;
+    background: url('img/иконки/cancel.png') no-repeat center;
+    background-size: 20px 20px;
+}
+
+#button_save1,#button_save2
+{
+    width: 40px;
+    background: url('img/иконки/save.png') no-repeat center;
     background-size: 20px 20px;
 }
 
@@ -386,7 +427,12 @@ p
     z-index: 2;
 }
 
-.leaflet-control-layers
+.leaflet-draw
+{
+    z-index: 5;
+}
+
+.leaflet-control-layers,.leaflet-control-attribution, .leaflet-control-zoom
 {
     display: none;
 }
@@ -428,7 +474,7 @@ p
     top:-90px;
     right: 630px;
 }
-#error_put_modul,#checkbox_mess_SMW,.box-pointer-hidden, #checkbox_content_modal_window,.leaflet-control-zoom
+#error_put_modul,#checkbox_mess_SMW,.box-pointer-hidden, #checkbox_content_modal_window
 {
     display: none;
 }
@@ -496,4 +542,26 @@ p
 .btn_modul
 {
     float: right;
+}
+
+.content_block_drow
+{
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0px 0px 30px;
+}
+
+.content_drow
+{
+    margin-bottom: 20px;
+}
+
+.leaflet-draw-guide-dash
+{
+    z-index: 100;
+}
+
+.leaflet-draw-tooltip,.leaflet-draw
+{
+    display: none;
 }

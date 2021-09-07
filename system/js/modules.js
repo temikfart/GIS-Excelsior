@@ -7,7 +7,6 @@ function output_description(item,id)
 
     document.getElementById('one_tab').innerHTML = "<img src='"+mass_images_moduls[item]+"' class='tab_image'></img><p class='tab_text'>"+mass_module_description[item]+"</p>";
     document.getElementById('two_tab').innerHTML = "<p class='tab_text'>Приоритет: <b>"+mass_module_criteria[item][0]+"</b><br>Значимость: <b>"+mass_module_criteria[item][1]+"</b><br>Рельеф местности: <b>"+mass_module_criteria[item][2]+"</b><br>Опасность: <b>"+mass_module_criteria[item][3]+"</b><br>Место затратность: <b>"+mass_module_criteria[item][4]+"</b><br>Энергопотребление: <b>"+mass_module_criteria[item][5]+"</b></p>";
-    document.getElementById('content_teh_description').innerHTML = "<p id = 'text_content_teh_description'>"+mass_teh_description[item]+"</p>";
     document.getElementById('button_to_marker').innerHTML = "<button id ='button_delete_modul' class='buttonMA' onclick = 'delete_modul("+item +","+ id+")'></button><button class='buttonMA' id = 'button_move_modul' onclick = 'move_modul("+item +","+ id+")'></button>";
 }
 
