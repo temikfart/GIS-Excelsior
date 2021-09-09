@@ -6,6 +6,11 @@ function cancellation_SMW(i)
         check_cancellation_SMW = false;
         obj.innerHTML = '';
         document.getElementById('checkbox_mess_SMW').checked = false;
+        Circle.forEach((circle) => 
+        {
+            circle.remove();
+        });
+        Circle = [];
     }
     else if(i == 2)
     {
@@ -20,6 +25,7 @@ function check_moduls()
     {
         document.getElementById('clean_modal').click();
         document.getElementById('checkbox_content_modal_windows').checked = true;
+        cancellation_SMW(1);
     }
     else
     {
@@ -48,6 +54,11 @@ function clean_markers()
     });
     Markers = [];
     data_coordinates = [];
+    Circle.forEach((circle) => 
+    {
+        circle.remove();
+    });
+    Circle = [];
 
     delete_drow();
 }
@@ -140,6 +151,7 @@ function block_button_drow(num)
 
 function create_drow()
 {
+    output_description(5,0);
     active_button_drow(1);
     document.getElementsByClassName("leaflet-draw-draw-polyline")[0].click();
 }
@@ -164,6 +176,7 @@ function back_drow()
 
 function edit_drow()
 {
+    output_description(5,0);
     active_button_drow(2);
     document.getElementsByClassName("leaflet-draw-edit-edit")[0].click();
 }

@@ -522,8 +522,10 @@ p
 
 #cancellation_SMW
 {
+    width: 30px;
+    height: 30px;
     position: absolute;
-    right: 0px;
+    right: 10px;
     top:7px;
 }
 

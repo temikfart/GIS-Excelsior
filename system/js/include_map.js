@@ -31,7 +31,7 @@ map.on('mousemove', function (e)
 });
 
 
-//Дороги
+//Подключение слоя дорог
 
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);

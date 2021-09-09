@@ -84,7 +84,7 @@ function select_modul(item)
     var check_SM = true;
     map.on('click', function () //при клике на карте
     {
-        var CMC = check_module_coor(item);//проверка координатов модуля (находится в файле аналагичном названии функции)
+        var CMC = check_coor_modul_map();
 
         if(CMC == true)
         {
@@ -94,9 +94,38 @@ function select_modul(item)
                 document.getElementById('cancellation_SMW').click();
                 document.getElementById('checkbox_mess_SMW').checked = false;
 
-                put_modul(item, x_in_map, y_in_map);
+                //проверка модулей (если модуль первый то ставится без проверки)
+                if(Markers.length != 0)
+                {
+
+                    var result_check_module_coor = check_module_coor(item, x_in_map, y_in_map); //функция в файле с названием функции
+                    if(result_check_module_coor[0] == false)
+                    {
+                        document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
+                        document.getElementById('error_put_modul').checked = true;
+                        setTimeout(close_error_put_modul, 2000);
+                        function close_error_put_modul()
+                        {
+                            document.getElementById('error_put_modul').checked = false;
+                        }
+                        Circle.forEach((circle) => 
+                        {
+                            circle.remove();
+                        });
+                        Circle = [];
+                        select_modul(item);
+                    }
+                    else
+                    {
+                        put_modul(item, x_in_map, y_in_map);
+                    }
+                }
+                else
+                {
+                    put_modul(item, x_in_map, y_in_map);
+                }
             }
-            check_SM = false;//что бы модуль ставился только один    ///КОГДА ОТМЕНА ТОЖЕ ДЕЛАТЬ ЛОЖЬ
+            check_SM = false;//что бы модуль ставился только один
         }
         else
         {
@@ -112,8 +141,40 @@ function select_modul(item)
             }
         }
     });
+
+    //Показывает круги опасности
+    data_coordinates.forEach((modul_coord, index) => 
+    {
+        modul_coord.forEach((coord) =>
+        {
+            var danger = mass_module_criteria[index][3];
+            switch(danger)
+            {
+                case 1:
+                    var danger_m = 400;
+                break;
+
+                case 2:
+                    var danger_m = 300;
+                break;
+
+                case 3:
+                    var danger_m = 30;
+                break;
+            }
+            var circle = L.circle([coord[0], coord[1]], danger_m, {
+                color: 'red',
+                fillColor: 'red',
+                fillOpacity: 0.5
+            });
+            circle.addTo(map);
+
+            Circle[Circle.length] = circle;
+        });
+    });
 } 
 
+let Circle = [];
 let data_coordinates = [];
 let Markers = [];
 let unic_id = 0;
@@ -125,6 +186,13 @@ var LayerMarkers;
 //Создание маркера
 function put_modul(item, x, y)
 {
+    //скрываем круги опасности
+    Circle.forEach((circle) => 
+    {
+        circle.remove();
+    });
+    Circle = [];
+
     var markerOptions = {
                         title: mass_name_modules[item],
                         clickable: true,
@@ -167,7 +235,7 @@ function put_modul(item, x, y)
     controller()
 }
 
-//перебирает и выводит все координаты модулей которые находятся на карте (пока для показа)
+//перебирает и выводит все координаты модулей которые находятся на карте (для показа)
 function show_coord_modul(item = -10, id = -10)
 {
     var elem_hints = document.getElementById('notices');
