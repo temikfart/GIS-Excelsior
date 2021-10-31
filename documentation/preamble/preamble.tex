@@ -13,6 +13,7 @@
 %\setmonofont{Courier New}									% задаёт шрифт с буквами одинаковой ширины		\texttt{}
 \usepackage{indentfirst}									% добавляет красную строку для первого абзаца
 \frenchspacing
+\usepackage[nottoc]{tocbibind}			% Удаляет Содержание из содержания
 
 %%% Дополнительная работа с математикой
 \usepackage{amsmath,amsfonts,amssymb,amsthm,mathtools} % AMS
@@ -74,12 +75,12 @@
 \usepackage{etoolbox} % логические операторы
 
 %%% Страница
-%\usepackage{extsizes} % Возможность сделать другой размер шрифта
-%\usepackage{geometry} % Простой способ задавать поля
-%	\geometry{top=25mm}
-%	\geometry{bottom=35mm}
-%	\geometry{left=20mm}
-%	\geometry{right=20mm}
+\usepackage{extsizes} % Возможность сделать другой размер шрифта
+\usepackage{geometry} % Простой способ задавать поля
+	\geometry{top=25mm}
+	\geometry{bottom=25mm}
+	\geometry{left=20mm}
+	\geometry{right=20mm}
 
 %%% Колонтитулы
 %\usepackage{fancyhdr}
@@ -112,10 +113,10 @@
 	pdfproducer={Производитель}, % Производитель
 	pdfkeywords={keyword1} {key2} {key3}, % Ключевые слова
 	colorlinks=true,       	% false: ссылки в рамках; true: цветные ссылки
-	linkcolor=red,          % внутренние ссылки
+	linkcolor=black,          % внутренние ссылки
 	citecolor=green,        % на библиографию
 	filecolor=magenta,      % на файлы
-	urlcolor=cyan           % на URL
+	urlcolor=blue           % на URL
 }
 
 %%% Работа с библиографией
