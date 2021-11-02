@@ -47,7 +47,7 @@ function check_module_coor(item, x, y)
                 break;
             }
             
-            if(gipotenuza < dng_modul_m+danger_m)
+            if((gipotenuza < dng_modul_m)||(gipotenuza<danger_m))
             {
                 check_error = false;
                 return;
