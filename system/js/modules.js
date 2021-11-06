@@ -34,10 +34,12 @@ function tab(numb)
 
 
 // Выбор модуля (нажили на модуль)
-var check_cancellation_SMW = true;
+var data_check = [];
 function select_modul(item)
-{
-    check_cancellation_SMW = true;
+{   
+    var index = data_check.length;
+    data_check[data_check.length] = true;
+    
     document.getElementById('text_MSMW').innerHTML = "Что бы поставить <i>"+mass_name_modules[item].toLowerCase()+"</i>, нажмите на <b>левую кнопку мыши</b>";
     document.getElementById('checkbox_mess_SMW').checked = true;
     document.getElementById('select_modul').click();
@@ -88,7 +90,7 @@ function select_modul(item)
 
         if(CMC == true)
         {
-            if((check_SM == true)&&(check_cancellation_SMW == true))
+            if((check_SM == true)&&(data_check[index] == true))
             {
                 obj.innerHTML = '';
                 document.getElementById('cancellation_SMW').click();
@@ -129,7 +131,7 @@ function select_modul(item)
         }
         else
         {
-            if((check_SM == true)&&(check_cancellation_SMW == true))
+            if((check_SM == true)&&(data_check[index] == true))
             {
                 document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
                 document.getElementById('error_put_modul').checked = true;

@@ -3,7 +3,7 @@ function cancellation_SMW(i)
 {
     if(i == 1)
     {
-        check_cancellation_SMW = false;
+        data_check[data_check.length-1] = false;
         obj.innerHTML = '';
         document.getElementById('checkbox_mess_SMW').checked = false;
         Circle.forEach((circle) => 
