@@ -11,6 +11,7 @@ map.fitBounds(bounds);
 var x_in_map = 0;
 var y_in_map = 0;
 
+//изменение координат на панели (при ведении курсора по карте)
 map.on('mousemove', function (e) 
 {
   x_in_map = e.latlng.lat;
@@ -32,7 +33,6 @@ map.on('mousemove', function (e)
 
 
 //Подключение слоя дорог
-
 var drawnItems = new L.FeatureGroup();
 map.addLayer(drawnItems);
 

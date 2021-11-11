@@ -1,21 +1,16 @@
 //Кнопка "Отмена" при выборе модуля
-function cancellation_SMW(i)
+function cancel_modul()
 {
-    if(i == 1)
-    {
-        data_check[data_check.length-1] = false;
-        obj.innerHTML = '';
-        document.getElementById('checkbox_mess_SMW').checked = false;
-        Circle.forEach((circle) => 
-        {
-            circle.remove();
-        });
-        Circle = [];
-    }
-    else if(i == 2)
-    {
-        document.getElementById('checkbox_content_modal_windows').checked = false;
-    }
+    data_check[data_check.length-1] = false;
+    obj.innerHTML = '';
+    document.getElementById('checkbox_mess_SMW').checked = false;
+    delete_circle();
+}
+
+//Кнопка "Отмена" на модальном окне "Отчистить"
+function cancel_clean()
+{
+    document.getElementById('checkbox_content_modal_windows').checked = false;
 }
 
 // проверяет наличие модулей на карте
@@ -25,7 +20,7 @@ function check_moduls()
     {
         document.getElementById('clean_modal').click();
         document.getElementById('checkbox_content_modal_windows').checked = true;
-        cancellation_SMW(1);
+        cancel_modul();
     }
     else
     {
@@ -34,7 +29,6 @@ function check_moduls()
 }
 
 // Кнопка "Отчистить"
-
 function clean_markers()
 {
     document.getElementById('checkbox_content_modal_windows').checked = false;
@@ -54,12 +48,8 @@ function clean_markers()
     });
     Markers = [];
     data_coordinates = [];
-    Circle.forEach((circle) => 
-    {
-        circle.remove();
-    });
-    Circle = [];
 
+    delete_circle();
     delete_drow();
 }
 
@@ -83,7 +73,6 @@ function clean_markers()
 }
 
 //Кнопку "Zoom"
-
 function zoom(fun)
 {
     if(fun == "in")
@@ -96,8 +85,12 @@ function zoom(fun)
     }
 }
 
-//Кнопки Дороги
 
+
+//КНОПКИ ДОРОГИ
+
+//Механика активации кнопок
+//(Активация кнопок)
 function active_button_drow(num)
 {
     document.getElementById("button_drow").className = "button_block activ_bd";
@@ -123,6 +116,7 @@ function active_button_drow(num)
         document.getElementById("button_save2").disabled = false;
     }
 }
+//(Блокировка кнопок)
 function block_button_drow(num)
 {
     document.getElementById("button_drow").className = "button img_red";
@@ -149,13 +143,15 @@ function block_button_drow(num)
     }
 }
 
+//Проложить дорогу
 function create_drow()
 {
-    output_description(5,0);
+    output_description(5,0);//активирую блок описание модуля
     active_button_drow(1);
     document.getElementsByClassName("leaflet-draw-draw-polyline")[0].click();
 }
 
+//сохранить дорогу(при построении)
 function save1_drow()
 {
     document.getElementsByClassName("leaflet-draw-actions")[0].childNodes[0].childNodes[0].click();
@@ -163,17 +159,20 @@ function save1_drow()
     cancel1_drow();
 }
 
+//отмена постройки дороги(при построении)
 function cancel1_drow()
 {
     block_button_drow(1);
     document.getElementsByClassName("leaflet-draw-actions")[0].childNodes[2].childNodes[0].click();
 }
 
+//назад на пункт(при построении)
 function back_drow()
 {
     document.getElementsByClassName("leaflet-draw-actions")[0].childNodes[1].childNodes[0].click();
 }
 
+//редактировать дорогу
 function edit_drow()
 {
     output_description(5,0);
@@ -181,6 +180,7 @@ function edit_drow()
     document.getElementsByClassName("leaflet-draw-edit-edit")[0].click();
 }
 
+//сохранение редактирования
 function save2_drow()
 {
     document.getElementsByClassName("leaflet-draw-actions")[1].childNodes[0].childNodes[0].click();
@@ -188,12 +188,14 @@ function save2_drow()
     cancel2_drow();
 }
 
+//отмена редактирования
 function cancel2_drow()
 {
     block_button_drow(2);
     document.getElementsByClassName("leaflet-draw-actions")[1].childNodes[1].childNodes[0].click();
 }
 
+//Отчистить дороги
 function delete_drow()
 {
     document.getElementsByClassName("leaflet-draw-edit-remove")[0].click();

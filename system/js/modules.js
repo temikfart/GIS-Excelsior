@@ -1,6 +1,11 @@
 let click = false;
 
-function output_description(item,id)
+//При передаче:
+//item - тип модуля (0 - жилой модуль; 1 - Космодром и тд)
+//id - индификатор модуля
+
+//Активирует и выводит информацию в блок "описание модуля"
+function output_description(item,id) 
 {
     click = true;
     tab('one_tab');
@@ -10,7 +15,7 @@ function output_description(item,id)
     document.getElementById('button_to_marker').innerHTML = "<button id ='button_delete_modul' class='buttonMA' onclick = 'delete_modul("+item +","+ id+")'></button><button class='buttonMA' id = 'button_move_modul' onclick = 'move_modul("+item +","+ id+")'></button>";
 }
 
-//Механика кнопок вкладок
+//Механика кнопок вкладок в блоке "Описание модуля"
 function tab(numb) 
 {
     if(click == true)
@@ -33,7 +38,7 @@ function tab(numb)
 }
 
 
-// Выбор модуля (нажили на модуль)
+//Функция выбора модуля (нажили на модуль в блоке "Модули")
 var data_check = [];
 function select_modul(item)
 {   
@@ -48,30 +53,31 @@ function select_modul(item)
     obj.innerHTML = '<img id="pointer1" class="box-pointer box-pointer-hidden" src="'+mass_imges_markers[item]+'">';
     var pointerElem = document.getElementById('pointer1');
 
-        function onMouseMove(event) //Привязывается маркер к курсору
+    //Привязывается флажок модуля к курсору
+    function onMouseMove(event)
+    {
+        var mouseX = event.pageX;
+        var mouseY = event.pageY;
+        var crd = boxElem.getBoundingClientRect();
+
+        if (crd.left <= mouseX && mouseX <= crd.right && crd.top <= mouseY && mouseY <= crd.bottom)
         {
-            var mouseX = event.pageX;
-            var mouseY = event.pageY;
-            var crd = boxElem.getBoundingClientRect();
-
-            if (crd.left <= mouseX && mouseX <= crd.right && crd.top <= mouseY && mouseY <= crd.bottom)
+            if (pointerElem.classList.contains('box-pointer-hidden')) 
             {
-                if (pointerElem.classList.contains('box-pointer-hidden')) 
-                {
-                    pointerElem.classList.remove('box-pointer-hidden');
-                }
-
-                var Mx = mouseX-333;
-                var My = mouseY-83;
-                pointerElem.style.transform = 'translate3d(' + Mx + 'px, ' + My + 'px, 30px)';
-            } 
-            else 
-            {
-                pointerElem.classList.add('box-pointer-hidden');
+                pointerElem.classList.remove('box-pointer-hidden');
             }
+            var Mx = mouseX-333;
+            var My = mouseY-83;
+            pointerElem.style.transform = 'translate3d(' + Mx + 'px, ' + My + 'px, 30px)';
+        } 
+        else 
+        {
+            pointerElem.classList.add('box-pointer-hidden');
         }
+    }
 
-    function disablePointer() //убираем маркер если курсор уходит с карты
+    //Убираем флажок модуля (если курсор ушел с блока "Карта")
+    function disablePointer()
     {
         requestAnimationFrame(function hidePointer() 
         {
@@ -83,9 +89,12 @@ function select_modul(item)
     boxElem.addEventListener('mouseleave', disablePointer, false);
 
 
-    var check_SM = true;
-    map.on('click', function () //при клике на карте
+    //При клике на карту (размещение модуля)
+
+    var check_SM = true;//(что бы взятый модуль ставился только один)
+    map.on('click', function ()
     {
+        //Проверка координат (можно ли ставить модуль (функция описана в отдельном одноименном файле))
         var CMC = check_coor_modul_map();
 
         if(CMC == true)
@@ -110,11 +119,8 @@ function select_modul(item)
                         {
                             document.getElementById('error_put_modul').checked = false;
                         }
-                        Circle.forEach((circle) => 
-                        {
-                            circle.remove();
-                        });
-                        Circle = [];
+
+                        delete_circle();
                         select_modul(item);
                     }
                     else
@@ -126,11 +132,12 @@ function select_modul(item)
                 {
                     put_modul(item, x_in_map, y_in_map);
                 }
+                check_SM = false;
             }
-            check_SM = false;//что бы модуль ставился только один
         }
         else
         {
+            //Выдается ошибка
             if((check_SM == true)&&(data_check[index] == true))
             {
                 document.getElementById('text_error_MSMW').innerHTML = "<b>ОШИБКА: </b> в данном месте <b>"+mass_name_modules[item].toLowerCase()+"</b>, ставить нельзя"
@@ -144,13 +151,13 @@ function select_modul(item)
         }
     });
 
-    //Показывает круги опасности
+    //Показывает границы объектов (красные круги)
     data_coordinates.forEach((modul_coord, index) => 
     {
         modul_coord.forEach((coord) =>
         {
             var danger = mass_module_criteria[index][3];
-            switch(danger)
+            switch(danger)//(размер объекта)
             {
                 case 1:
                     var danger_m = 400;
@@ -176,6 +183,16 @@ function select_modul(item)
     });
 } 
 
+ //удаляет границы объектов (красные круги)
+ function delete_circle()
+ {
+     Circle.forEach((circle) => 
+     {
+         circle.remove();
+     });
+     Circle = [];
+ }
+
 let Circle = [];
 let data_coordinates = [];
 let Markers = [];
@@ -185,20 +202,15 @@ var mass_markers = [];
 var LayerEmpty = L.layerGroup([]); 
 var LayerMarkers;
 
-//Создание маркера
+//Создание модуля на карте
 function put_modul(item, x, y)
 {
-    //скрываем круги опасности
-    Circle.forEach((circle) => 
-    {
-        circle.remove();
-    });
-    Circle = [];
+    delete_circle();
 
     var markerOptions = {
                         title: mass_name_modules[item],
                         clickable: true,
-                        draggable: false, //перемещение
+                        draggable: false,
 
                         icon: L.icon({ //настройки иконки
                                         iconUrl: mass_imges_markers[item],
@@ -208,14 +220,14 @@ function put_modul(item, x, y)
                                     })
                             };
   
-    var marker = L.marker([x, y], markerOptions);// Значение координат для иконки
+    var marker = L.marker([x, y], markerOptions);//(значение координат для иконки)
   
-    // Надпись на иконку
+    //надпись на иконку
     marker.bindPopup(mass_name_modules[item]).openPopup();
   
     marker.addTo(map);
 
-    // Записывает id  маркера
+    //записывает id  маркера
     if(data_coordinates[item] == null)
     {
         data_coordinates[item] = [];
@@ -226,7 +238,7 @@ function put_modul(item, x, y)
     Markers[item][id] = marker;  
     data_coordinates[item][id] = [x, y]; //записывает первоначальные координаты каждого модуля на карте в массив
 
-    //Переключение информации в блоках
+    //Переключение информации в блоке "Описание модуля" при нажатии на модуль
     output_description(item, id); 
     marker.on('mousedown',function(){
         output_description(item, id);
@@ -234,10 +246,10 @@ function put_modul(item, x, y)
     });
 
     show_coord_modul();
-    controller()
+    controller();
 }
 
-//перебирает и выводит все координаты модулей которые находятся на карте (для показа)
+//перебирает и выводит все координаты модулей которые находятся на карте (в блок "Координаты модулей")
 function show_coord_modul(item = -10, id = -10)
 {
     var elem_hints = document.getElementById('notices');

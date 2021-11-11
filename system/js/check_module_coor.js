@@ -2,8 +2,9 @@
 
 function check_module_coor(item, x, y)
 {
+    //размер границы модуля
     var danger = mass_module_criteria[item][3];
-    switch(danger)//изменить (стоит на сколько пикселей нельзя ставить) на метры
+    switch(danger)
     {
         case 1:
             var danger_m = 400;
@@ -18,6 +19,7 @@ function check_module_coor(item, x, y)
         break;
     }
 
+    //переберает все модули находящиеся на карте и проверяет их координаты
     var check_error = true;
     data_coordinates.forEach((modul_coord, index) => 
     {
@@ -32,7 +34,7 @@ function check_module_coor(item, x, y)
 
             //проверяем критерии
             var dng_modul = mass_module_criteria[index][3];
-            switch(dng_modul)//изменить (стоит на сколько пикселей нельзя ставить) на метры
+            switch(dng_modul)//размер границы модуля
             {
                 case 1:
                     var dng_modul_m = 400;
@@ -47,6 +49,7 @@ function check_module_coor(item, x, y)
                 break;
             }
             
+            //сравниваем гипотенузу от рассматримаемого модуля и нашей точки
             if((gipotenuza < dng_modul_m)||(gipotenuza<danger_m))
             {
                 check_error = false;
