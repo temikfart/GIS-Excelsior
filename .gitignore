@@ -1,0 +1,8 @@
+documentation/main.pdf
+*.aux
+*.log
+*.lot
+*.out
+*.gz
+*.toc
+.idea/
